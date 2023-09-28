@@ -1,17 +1,16 @@
 import { paratlanTag, parosTag } from "../../htmlUtils.js";
+import { KEPEK_MAPPA_ELERES } from "../model/adat.js";
+import EgyKepesView from "./EgyKepesView.js";
 
-class NagyKep
+class NagyKep extends EgyKepesView
 {
-    #szuloElem;
-    #kep;
     #balGombElem;
     #jobbGombElem;
     #nagyKepHelyeElem;
 
     constructor(szuloElem, kep)
     {
-        this.#szuloElem = szuloElem;
-        this.#kep = kep;
+        super(szuloElem, kep);
         this.#htmlOsszerak();
         this.#nagyKepHelyeElem = $("#nagyKepHelye");
         this.#balGombElem = $("#bal")
@@ -29,19 +28,19 @@ class NagyKep
         let txt = "";
         txt += parosTag("button", { id: "bal", class: "btn btn-primary" }, ["◀"]);
         txt += parosTag("div", { class: "card" }, [
-            parosTag("div", { class: "card-header" }, ["Főkép"]),
+            parosTag("div", { class: "card-header" }, [`${this._kep.gyarto ?? "Ismeretlen gyártó"}: ${this._kep.nev ?? "Ismeretlen modell"}`]),
             parosTag("div", { id: "nagyKepHelye", class: "card-body" }, [
-                paratlanTag("img", { src: "kepek/" + this.#kep.kep, alt: this.#kep.kep, class: "img-thumbnail"})
+                paratlanTag("img", { src: KEPEK_MAPPA_ELERES + this._kep.kep, alt: `${this._kep.gyarto}: ${this._kep.modell}`, class: "img-thumbnail"})
             ]),
-            parosTag("div", { class: "card-footer" }, ["Leírás"])
+            parosTag("div", { class: "card-footer" }, [`Évjárat: ${this._kep.evjarat ?? "N/A"} Lóerő: ${this._kep.loero ?? "N/A"}`])
         ]);
         txt += parosTag("button", { id: "jobb", class: "btn btn-primary" }, ["▶"]);
-        this.#szuloElem.html(txt);
+        this._szuloElem.html(txt);
     }
 
     nagyKepCsere(kep)
     {
-        this.#nagyKepHelyeElem.html(paratlanTag("img", { src: "kepek/" + kep.kep, alt: kep, class: "img-thumbnail" }));
+        this.#nagyKepHelyeElem.html(paratlanTag("img", { src: KEPEK_MAPPA_ELERES + kep.kep, alt: `${kep.gyarto}: ${kep.nev}`, class: "img-thumbnail" }));
     }
 }
 

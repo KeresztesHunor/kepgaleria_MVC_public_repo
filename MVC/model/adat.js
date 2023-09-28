@@ -1,3 +1,5 @@
+export const KEPEK_MAPPA_ELERES = "kepek/";
+
 export const KEP_LISTA = [
     {
         gyarto: "Ford",

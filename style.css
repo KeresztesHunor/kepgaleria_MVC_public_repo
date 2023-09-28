@@ -10,3 +10,12 @@
 #nagyKepHelye {
     text-align: center;
 }
+
+.kis-kep-tarolo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.kis-kep-tarolo > img {
+    width: 100%;
+}
