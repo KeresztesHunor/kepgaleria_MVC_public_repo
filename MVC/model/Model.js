@@ -16,6 +16,11 @@ class Model
         return this.#kepLista;
     }
 
+    set id(id)
+    {
+        this.#id = id % this.#kepLista.length;
+    }
+
     aktualisKep()
     {
         return this.#kepLista[this.#id];

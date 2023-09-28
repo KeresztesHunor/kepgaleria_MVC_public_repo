@@ -26,7 +26,7 @@ class NagyKep extends EgyKepesView
     #htmlOsszerak()
     {
         let txt = "";
-        txt += parosTag("button", { id: "bal", class: "btn btn-primary" }, ["◀"]);
+        txt += parosTag("button", {id: "bal", class: "btn btn-primary" }, ["◀"]);
         txt += parosTag("div", { class: "card" }, [
             parosTag("div", { class: "card-header" }, [`${this._kep.gyarto ?? "Ismeretlen gyártó"}: ${this._kep.nev ?? "Ismeretlen modell"}`]),
             parosTag("div", { id: "nagyKepHelye", class: "card-body" }, [

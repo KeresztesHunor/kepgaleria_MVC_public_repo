@@ -17,6 +17,10 @@ class Controller
             MODEL.jobbra();
             NAGY_KEP.nagyKepCsere(MODEL.aktualisKep());
         });
+        $(window).on("kisKepreKattintottEvent", event => {
+            MODEL.id = event.detail.index;
+            NAGY_KEP.nagyKepCsere(MODEL.aktualisKep());
+        });
     }
 }
 
